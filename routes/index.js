@@ -43,6 +43,14 @@ router.get('/', function (req, res, next) {
 });
 
 
+router.get('/error', function (req, res, next) {
+  res.render('error');
+})
+
+router.get('/search', function (req, res, next) {
+  res.render('search')
+})
+
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function (req, res, next) {
 

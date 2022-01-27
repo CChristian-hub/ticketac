@@ -10,7 +10,7 @@ body {
 
 #navbar {
   background-color: white;
-  order:2;
+  order: 2;
 }
 
 #ticketacButton {
@@ -111,42 +111,48 @@ a {
   margin-top: 20px;
 }
 
-
 /* START HOME PAGE */
 
-h3{
-  color:white;
+h3 {
+  color: white;
 }
 
-input{
+input {
   text-indent: 15px;
 }
 
-.container-homepage{
+.container-homepage {
   text-align: center;
   margin-top: 50px;
 }
 
-.container-input{
+.container-input {
   margin-top: 25px;
   height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
 }
 
-.container-input > input{
+.container-input > input {
   height: 30px;
   border-color: rgba(197, 197, 197, 0.733);
   border-radius: 6px;
 }
 
-#btn-go{
+#btn-go {
   border: none;
   width: 40px;
   background-color: rgb(108, 195, 221);
-  color:white;
+  color: white;
   border-radius: 3px;
   font-size: 16px;
 }
+/* ERROR PAGE */
+
+#errorTitle {
+  color: white;
+}
+
+/* SEARCH PAGE */
