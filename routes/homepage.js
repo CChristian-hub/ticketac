@@ -50,7 +50,7 @@ router.post('/search', async function (req, res, next) {
     return res.redirect('ticketerror');
   }
 
-  //Parsing Date and Saving valid array in Stock variable
+  // Parsing Date and Saving valid array in Stock variable
   var date = new Date(Date.parse(req.body.date));
   var month = date.getMonth() + 1;
   var day = date.getDate();
@@ -62,6 +62,15 @@ router.post('/search', async function (req, res, next) {
     if (dbMonth == month && dbDay >= day) {
       stock.push(journey[i]);
     }
+  }
+
+  // if (stock.length === 0) {
+  // return res.redirect('ticketerror');
+  // }
+  console.log(journey.length);
+  console.log(stock.length)
+  if (stock.length === 0) {
+    return res.redirect('ticketerror');
   }
   //Rendering with array of valid travels, the month and day for display
   res.render('search', { journey: stock, month, day })
