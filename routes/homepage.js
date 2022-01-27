@@ -9,7 +9,6 @@ const { aggregate } = require('../models/user');
 
 router.get('/', function (req, res, next) {
   if(req.session.user == null || req.session.user == undefined){
-    console.log(req.session.user);
     res.render('index');
   }else{
     console.log(req.session.user);
@@ -20,20 +19,8 @@ router.get('/', function (req, res, next) {
 
 router.get('/my-tickets', async function (req, res, next) {
   //let produitCard = req.session.find({_id: req.session.ticketCard})
-  console.log(req.query)
+  
   res.render('my-tickets',{produitCard: req.session.ticketCard});
-})
-
-router.get('/lastTrips', function (req, res, next) {
-  res.render('lastTrips')
-})
-
-router.get('/ticketError', function (req, res, next) {
-  res.render('ticketerror');
-})
-
-router.get('/search', function async(req, res, next) {
-  res.render('search')
 })
 
 router.get('/add-ticket', function (req, res, next) {
@@ -45,8 +32,23 @@ router.get('/add-ticket', function (req, res, next) {
   res.redirect('my-tickets');
 })
 
+router.get('/lastTrips', function (req, res, next) {
+  if(req.session.user !== null){
+    res.render('lastTrips')
+  }else{
+    res.render('index')
+  }
+})
+
+router.get('/ticketError', function (req, res, next) {
+  res.render('ticketerror');
+})
+
+router.get('/search', function async(req, res, next) {
+  res.render('search')
+})
+
 router.get('/deconnexion', function async(req, res, next) {
-  console.log('On déco session user')
   req.session.user = null;
   res.redirect('/')
 })
