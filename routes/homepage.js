@@ -8,8 +8,12 @@ router.post('/', function (req, res, next) {
 })
 
 
-
 router.get('/', function (req, res, next) {
   res.render('homepage');
 })
+
+router.get('/my-tickets',function (req,res,next){
+  res.render('my-tickets');
+})
+
 module.exports = router;
