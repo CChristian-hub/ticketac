@@ -17,6 +17,7 @@ router.post('/sign-up', async function(req, res, next) {
       lastName: req.body.lastNameFromFront,
       email: req.body.emailFromFront,
       password: req.body.passwordFromFront,
+      journey:[]
     });
 
     await newUsers.save();
@@ -29,11 +30,15 @@ router.post('/sign-up', async function(req, res, next) {
 router.post('/sign-in', async function(req, res, next) {
 
   let allUsers = await usersModel.find();
+ 
   
   // Création séssion si email est mdp in BDD
   for(let i = 0; i < allUsers.length; i++){
     if(allUsers[i].email == req.body.emailFromFront){
       if(allUsers[i].password == req.body.passwordFromFront){
+        req.session.user = {
+          id: allUsers[i]._id,
+        },
         res.redirect('/homepage')
       }
     }
