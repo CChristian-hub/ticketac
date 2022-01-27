@@ -1,3 +1,0 @@
-Sometext;
-$
-lqsdqdl 
