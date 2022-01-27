@@ -110,3 +110,43 @@ a {
 .form button {
   margin-top: 20px;
 }
+
+
+/* START HOME PAGE */
+
+h3{
+  color:white;
+}
+
+input{
+  text-indent: 15px;
+}
+
+.container-homepage{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container-input{
+  margin-top: 25px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:20px;
+}
+
+.container-input > input{
+  height: 30px;
+  border-color: rgba(197, 197, 197, 0.733);
+  border-radius: 6px;
+}
+
+#btn-go{
+  border: none;
+  width: 40px;
+  background-color: rgb(108, 195, 221);
+  color:white;
+  border-radius: 3px;
+  font-size: 16px;
+}
