@@ -22,34 +22,24 @@
           </tr> 
         </thead>
         <tbody>
+        <% let priceTotal = 0%> 
+          <% for(let i = 0; i < produitCard.length; i++) { %> 
+            
           <tr style="background-color: rgba(255, 255, 255, 0.829);">
-            <th scope="row">1</th>
-            <td>Paris/Lille</td>
-            <td>02/08/2019</td>
-            <td>15:00 pm</td>
-            <td>80€</td>
+            <th scope="row"><%=i%> </th>
+            <td><%=produitCard[i].departure%> / <%=produitCard[i].arrival%></td>
+            <td><%=produitCard[i].date%></td>
+            <td><%=produitCard[i].departureTime%></td>
+            <td><%= produitCard[i].price %>€</td>
+            <% priceTotal += produitCard[i].price %> 
           </tr>
-          <tr style="background-color: rgba(255, 255, 255, 0.829);">
-            <th scope="row">2</th>
-            <td>Paris/Lille</td>
-            <td>02/08/2019</td>
-            <td>15:00 pm</td>
-            <td>80€</td>
-          </tr>
-          <tr style="background-color: rgba(255, 255, 255, 0.829);">
-            <th scope="row">3</th>
-            <td>Paris/Lille</td>
-            <td>02/08/2019</td>
-            <td>15:00 pm</td>
-            <td>80€</td>
-           
-          </tr>
+         <% } %> 
           <tr class='test' style="border:none; background-color: rgba(240, 180, 180, 0.883);">
             <th scope="row" style="border:none;">Total</th>
             <td style="border:none;" ></td>
             <td style="border:none;"></td>
             <td style="border:none;"></td>
-            <td style="border:none;">240€</td>
+            <td style="border:none;"><%=Number(priceTotal)%>€</td>
            
             
                 

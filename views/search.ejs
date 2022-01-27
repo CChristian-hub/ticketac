@@ -17,6 +17,7 @@
             <h1 class="departureTitle">Tickets available on <%= day %>/<%=month %> :</h1>
 
             <% for( let i=0; i < journey.length; i++ ) { %>
+        
                 <div class="d-flex searchTicket justify-content-around col-8 align-items-center">
                     <p class="departureCity"><span>
                             <%= journey[i].departure%>
@@ -29,7 +30,7 @@
                         <span class="departurePrice">
                             <%= journey[i].price%>€
                         </span><span>
-                            <a href="/homepage/add-ticket?ticketId=<%= journey[i].id %>">
+                            <a href="/homepage/add-ticket?departure=<%=journey[i].departure%>&arrival=<%=journey[i].arrival%>&departureTime=<%=journey[i].departureTime%>&price=<%=journey[i].price%>&date=<%=formatDate(journey[i].date)%>">
                                 <button type="button" class="btn btn-danger">OK</button>
                             </a>
                         </span>

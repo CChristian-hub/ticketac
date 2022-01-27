@@ -13,6 +13,10 @@ var paiementRouter = require('./routes/paiement');
 
 var app = express();
 
+app.locals.formatDate = (date) => {
+  return date.toLocaleDateString('fr-FR')
+}
+
 const Stripe = require('stripe');
 const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 

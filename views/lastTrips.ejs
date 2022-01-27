@@ -9,7 +9,26 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
     <body>
-      <%- include('navbar.ejs') %> 
+      <div id="navbar" class="d-flex justify-content-between">
+
+        <div id="navbarLeft" class="d-flex align-items-center">
+            <a href="/homepage">
+                <img src="/images/train.png" class="m-3" alt="train_logo">
+            </a>
+            <a href="/homepage" class="m-3" id="ticketacButton">
+                Ticketac
+            </a>
+        </div>
+    
+        <div id="navbarRight" class="d-flex align-items-centers m-3 p-3">
+            <a href="/" id="navConnexion" class="m-3">
+                Déconnexion
+            </a>
+            <a href="/homepage/lastTrips" id="navLastTrips" class="m-3">
+                My last trips
+            </a>
+        </div>
+    </div> 
       <h2 style="text-align: center; margin-top: 30px; color:white">My last trips</h2>
       <table class="table" style="margin-top: 30px; width: 700px; margin:auto; ">
         <thead style="background-color: rgb(255, 255, 255); border-radius:30px">

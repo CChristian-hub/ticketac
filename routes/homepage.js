@@ -6,18 +6,22 @@ const mongoose = require('mongoose');
 const { aggregate } = require('../models/user');
 
 
-router.post('/', function (req, res, next) {
-  res.render('homepage');
-})
-
 
 router.get('/', function (req, res, next) {
-  console.log(req.session.user);
-  res.render('homepage');
+  if(req.session.user == null || req.session.user == undefined){
+    console.log(req.session.user);
+    res.render('index');
+  }else{
+    console.log(req.session.user);
+    res.render('homepage')
+  }
 })
 
-router.get('/my-tickets', function (req, res, next) {
-  res.render('my-tickets');
+
+router.get('/my-tickets', async function (req, res, next) {
+  //let produitCard = req.session.find({_id: req.session.ticketCard})
+  console.log(req.query)
+  res.render('my-tickets',{produitCard: req.session.ticketCard});
 })
 
 router.get('/lastTrips', function (req, res, next) {
@@ -31,6 +35,23 @@ router.get('/ticketError', function (req, res, next) {
 router.get('/search', function async(req, res, next) {
   res.render('search')
 })
+
+router.get('/add-ticket', function (req, res, next) {
+  if(req.session.ticketCard == undefined){
+    req.session.ticketCard = [];
+  }
+    req.session.ticketCard.push(req.query)
+  
+  res.redirect('my-tickets');
+})
+
+router.get('/deconnexion', function async(req, res, next) {
+  console.log('On déco session user')
+  req.session.user = null;
+  res.redirect('/')
+})
+
+
 router.post('/search', async function (req, res, next) {
   var journeys = await journeyModel.find();
 
@@ -76,11 +97,7 @@ router.post('/search', async function (req, res, next) {
 })
 
 
-router.get('/add-ticket', function (req, res, next) {
-  console.log(req.session.user);
-  console.log(req.query.ticketId);
-  res.redirect('/');
-})
+
 
 
 module.exports = router;

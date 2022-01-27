@@ -4,7 +4,6 @@ var router = express.Router();
 let usersModel = require('../models/user');
 
 router.get('/', function (req, res, next) {
-  console.log('TESTTTTT')
   res.render('index')
 });
 
