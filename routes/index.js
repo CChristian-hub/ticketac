@@ -43,8 +43,8 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/error', function (req, res, next) {
-  res.render('error');
+router.get('/ticketError', function (req, res, next) {
+  res.render('ticketerror');
 })
 
 router.get('/search', function (req, res, next) {
