@@ -23,12 +23,12 @@
           <div class="formArea">
             <h4 class="titleForm">Sign Up</h4>
 
-            <form action="/sign-up" method="POST">
+            <form action="/users/sign-up" method="POST">
               <div class="form-group">
-                <input name="usernameFromFront" type="text" class="form-control" placeholder="name">
+                <input name="firstNameFromFront" type="text" class="form-control" placeholder="firstname">
               </div>
               <div class="form-group">
-                <input name="usernameFromFront" type="text" class="form-control" placeholder="firstname">
+                <input name="lastNameFromFront" type="text" class="form-control" placeholder="lastname">
               </div>
               <div class="form-group">
                 <input name="emailFromFront" type="email" class="form-control" aria-describedby="emailHelp"
@@ -52,7 +52,7 @@
 
             <h4 class="titleForm">Sign In</h4>
 
-            <form action="/homepage" method="POST">
+            <form action="/users/sign-in" method="POST">
               <div class="form-group">
                 <input name="emailFromFront" type="email" class="form-control" aria-describedby="emailHelp"
                   placeholder="Enter email">

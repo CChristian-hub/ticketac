@@ -1,8 +1,8 @@
 let mongoose = require('mongoose');
 
 let usersSchema = mongoose.Schema({
-    name:String,
     firstName:String,
+    lastName:String,
     email:String,
     password:String,
     journeys:[{ type: mongoose.Schema.Types.ObjectId, ref: 'journey' }]
