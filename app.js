@@ -9,10 +9,12 @@ var session = require("express-session");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homepageRouter = require('./routes/homepage');
-var models = require('./routes/index')
+var paiementRouter = require('./routes/paiement');
 
 var app = express();
 
+const Stripe = require('stripe');
+const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 app.use(
   session({
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/homepage', homepageRouter);
+app.use('/paiement', paiementRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

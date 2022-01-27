@@ -192,3 +192,13 @@ input {
 .departurePrice {
   font-weight: bold;
 }
+
+
+/* MY TICKERS */
+
+.btn-confirm{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
