@@ -14,52 +14,28 @@
     <%- include('navbar.ejs') %>
 
         <div class="d-flex flex-column align-items-center">
-            <h1 class="departureTitle">Tickets available on 02/08:</h1>
+            <h1 class="departureTitle">Tickets available on <%= day %>/<%=month %> :</h1>
 
-            <div class="d-flex searchTicket justify-content-around col-8 align-items-center">
-                <p class="departureCity"><span>Paris</span>/<span>Lille</span></p>
-                <p class="departureInfo">train departure at : 15:00pm</p>
-                <p>
-                    <span class="departurePrice">93€ </span><span>
-                        <a href="">
-                            <button type="button" class="btn btn-danger">OK</button>
-                        </a>
-                    </span>
-                </p>
-            </div>
-            <div class="d-flex searchTicket justify-content-around col-8 align-items-center">
-                <p class="departureCity"><span>Truc</span>/<span>Machin</span></p>
-                <p class="departureInfo">train departure at : 15:00pm</p>
-                <p>
-                    <span class="departurePrice">93€ </span><span>
-                        <a href="">
-                            <button type="button" class="btn btn-danger">OK</button>
-                        </a>
-                    </span>
-                </p>
-            </div>
-            <div class="d-flex searchTicket justify-content-around col-8 align-items-center">
-                <p class="departureCity"><span>Marseille</span>/<span>Nice</span></p>
-                <p class="departureInfo">train departure at : 15:00pm</p>
-                <p>
-                    <span class="departurePrice">93€ </span><span>
-                        <a href="">
-                            <button type="button" class="btn btn-danger">OK</button>
-                        </a>
-                    </span>
-                </p>
-            </div>
-            <div class="d-flex searchTicket justify-content-around col-8 align-items-center">
-                <p class="departureCity"><span>Lyon</span>/<span>Lille</span></p>
-                <p class="departureInfo">train departure at : 15:00pm</p>
-                <p>
-                    <span class="departurePrice">93€ </span><span>
-                        <a href="">
-                            <button type="button" class="btn btn-danger">OK</button>
-                        </a>
-                    </span>
-                </p>
-            </div>
+            <% for( let i=0; i < journey.length; i++ ) { %>
+                <div class="d-flex searchTicket justify-content-around col-8 align-items-center">
+                    <p class="departureCity"><span>
+                            <%= journey[i].departure%>
+                        </span>/<span>
+                            <%= journey[i].arrival %>
+                        </span></p>
+                    <p class="departureInfo">train departure at : <%= journey[i].departureTime %>
+                    </p>
+                    <p>
+                        <span class="departurePrice">
+                            <%= journey[i].price%>€
+                        </span><span>
+                            <a href="">
+                                <button type="button" class="btn btn-danger">OK</button>
+                            </a>
+                        </span>
+                    </p>
+                </div>
+                <% } %>
         </div>
 </body>
 
