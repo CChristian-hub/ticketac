@@ -28,7 +28,7 @@ router.get('/ticketError', function (req, res, next) {
   res.render('ticketerror');
 })
 
-router.get('/search', function (req, res, next) {
+router.get('/search', function async(req, res, next) {
   res.render('search')
 })
 router.post('/search', async function (req, res, next) {
@@ -60,20 +60,27 @@ router.post('/search', async function (req, res, next) {
     var dbMonth = dbDate.getMonth() + 1;
     var dbDay = dbDate.getDate();
     if (dbMonth == month && dbDay >= day) {
+      // console.log(journey[i]._id) //this works to get id
       stock.push(journey[i]);
     }
   }
 
-  // if (stock.length === 0) {
-  // return res.redirect('ticketerror');
-  // }
-  console.log(journey.length);
-  console.log(stock.length)
+  // console.log(journey.length);
+  // console.log(stock.length)
   if (stock.length === 0) {
     return res.redirect('ticketerror');
   }
+
   //Rendering with array of valid travels, the month and day for display
   res.render('search', { journey: stock, month, day })
 })
+
+
+router.get('/add-ticket', function (req, res, next) {
+  console.log(req.session.user);
+  console.log(req.query.ticketId);
+  res.redirect('/');
+})
+
 
 module.exports = router;
