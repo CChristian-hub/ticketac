@@ -16,4 +16,8 @@ router.get('/my-tickets',function (req,res,next){
   res.render('my-tickets');
 })
 
+router.get('/lastTrips', function(req,res,next){
+  res.render('lastTrips')
+})
+
 module.exports = router;
