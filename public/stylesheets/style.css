@@ -1,13 +1,46 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(#c2e59c, #64b3f4);
   height: 100vh;
   width: 100%;
 }
 
+/* NAV BAR START*/
+
+#ticketacButton {
+  color: black;
+  text-decoration: none;
+}
+
+#navbarRight {
+  text-decoration: none;
+}
+
+#navConnexion {
+  color: red;
+  text-decoration: none;
+}
+
+#ticketacButton {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#navbarRight {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#navLastTrips {
+  color: black;
+  text-decoration: none;
+}
+
+/* NAR BAR END */
+
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 .card {
@@ -17,58 +50,58 @@ a {
 }
 
 .btr {
-  border-top-right-radius: 5px !important
+  border-top-right-radius: 5px !important;
 }
 
 .btl {
-  border-top-left-radius: 5px !important
+  border-top-left-radius: 5px !important;
 }
 
 .btn-dark {
   color: #fff;
   background-color: #0d6efd;
-  border-color: #0d6efd
+  border-color: #0d6efd;
 }
 
 .btn-dark:hover {
   color: #fff;
   background-color: #0d6efd;
-  border-color: #0d6efd
+  border-color: #0d6efd;
 }
 
 .nav-pills {
   display: table !important;
-  width: 100%
+  width: 100%;
 }
 
 .nav-pills .nav-link {
   border-radius: 0px;
-  border-bottom: 1px solid #0d6efd40
+  border-bottom: 1px solid #0d6efd40;
 }
 
 .nav-item {
   display: table-cell;
-  background: #0d6efd2e
+  background: #0d6efd2e;
 }
 
 .form {
   padding: 10px;
-  height: 300px
+  height: 300px;
 }
 
-.form-group{
+.form-group {
   margin-top: 20px;
 }
 
 .form input {
   margin-bottom: 12px;
-  border-radius: 3px
+  border-radius: 3px;
 }
 
 .form input:focus {
-  box-shadow: none
+  box-shadow: none;
 }
 
 .form button {
-  margin-top: 20px
+  margin-top: 20px;
 }
