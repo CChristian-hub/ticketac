@@ -8,39 +8,43 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-    <body>
-      <div id="navbar" class="d-flex justify-content-between">
 
-        <div id="navbarLeft" class="d-flex align-items-center">
-            <a href="/homepage">
-                <img src="/images/train.png" class="m-3" alt="train_logo">
-            </a>
-            <a href="/homepage" class="m-3" id="ticketacButton">
-                Ticketac
-            </a>
-        </div>
-    
-        <div id="navbarRight" class="d-flex align-items-centers m-3 p-3">
-            <a href="/" id="navConnexion" class="m-3">
-                Déconnexion
-            </a>
-            <a href="/homepage/lastTrips" id="navLastTrips" class="m-3">
-                My last trips
-            </a>
-        </div>
+<body>
+  <div id="navbar" class="d-flex justify-content-between">
+
+    <div id="navbarLeft" class="d-flex align-items-center">
+      <a href="/homepage">
+        <img src="/images/train.png" class="m-3" alt="train_logo">
+      </a>
+      <a href="/homepage" class="m-3" id="ticketacButton">
+        Ticketac
+      </a>
+    </div>
+
+    <div id="navbarRight" class="d-flex align-items-centers m-3 p-3">
+      <a href="/" id="navConnexion" class="m-3">
+        Déconnexion
+      </a>
+      <a href="/homepage/lastTrips" id="navLastTrips" class="m-3">
+        My last trips
+      </a>
     </div>
   </div>
-      <div class=container-homepage>
-        <h3>One-way ticket</h3>
-        <a href="/homepage/my-tickets"><button class="my-ticket">My ticket</button></a>
-        <div class="container-input">
-          <input type="text" placeholder="From: Paris,Marseille">
-          <input type="text" placeholder="To: Lille,Nantes">
-          <input type="date" min placeholder="Choice a date">
-          <button id="btn-go">Go</button>
-        </div>
-        <img style="margin-top: 100px" height="300" src="/images/landmark.png" alt="">
-        
-      </div>
-    </body>
+  </div>
+  <div class=container-homepage>
+    <h3>One-way ticket</h3>
+    <a href="/homepage/my-tickets"><button class="my-ticket">My ticket</button></a>
+    <div class="container-input">
+      <form action="/homepage/search" method="POST">
+        <input type="text" name="departure" placeholder="From: Paris,Marseille">
+        <input type="text" name="arrival" placeholder="To: Lille,Nantes">
+        <input type="date" name="date" value="" min="2018-01-01" max="2018-12-31" placeholder="Choice a date">
+        <button id="btn-go">Go</button>
+      </form>
+    </div>
+    <img style="margin-top: 100px" height="300" src="/images/landmark.png" alt="">
+
+  </div>
+</body>
+
 </html>

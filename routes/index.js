@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+let usersModel = require('../models/user');
 let journeyModel = require('../models/journey');
+const mongoose = require('mongoose');
 
 
 
@@ -13,15 +15,6 @@ var date = ["2018-11-20", "2018-11-21", "2018-11-22", "2018-11-23", "2018-11-24"
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
-
-router.get('/ticketError', function (req, res, next) {
-  res.render('ticketerror');
-})
-
-router.get('/search', function (req, res, next) {
-  res.render('search')
-})
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function (req, res, next) {
