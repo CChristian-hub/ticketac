@@ -10,6 +10,7 @@ body {
 
 #navbar {
   background-color: white;
+  order:2;
 }
 
 #ticketacButton {
