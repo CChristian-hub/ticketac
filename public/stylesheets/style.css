@@ -116,12 +116,12 @@ a {
 h3 {
   color: white;
 }
-.my-ticket{
+.my-ticket {
   border-radius: 3px;
   background-color: rgba(30, 156, 160, 0.582);
-  color:white;
-  padding:4px 10px;
-  border:none;
+  color: white;
+  padding: 4px 10px;
+  border: none;
 }
 
 input {
@@ -164,3 +164,31 @@ input {
 
 /* SEARCH PAGE */
 
+.searchTicket {
+  font-size: 20px;
+  height: 100px;
+  margin: 5px;
+  padding: 15px;
+  padding-bottom: 0px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.departureTitle {
+  color: white;
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+
+.departureInfo {
+  color: grey;
+}
+
+.departureCity {
+  font-weight: bold;
+}
+
+.departurePrice {
+  font-weight: bold;
+}
