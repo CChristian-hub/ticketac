@@ -25,11 +25,10 @@ router.post('/create-checkout-session', async (req, res) => {
     payment_method_types: ["card"],
     line_items: checkoutArray,
     mode: "payment",
-    success_url: 'https://agile-reaches-67060.herokuapp.com/success',
-    cancel_url: 'hhttps://agile-reaches-67060.herokuapp.com/cancel',
-    // https://agile-reaches-67060.herokuapp.com/homepage
-    // cancel_url: 'https://stark-beyond-35860.herokuapp.com/cancel',
-
+    success_url: 'https://agile-reaches-67060.herokuapp.com/paiement/success',
+    cancel_url: 'https://agile-reaches-67060.herokuapp.com/paiement/cancel',
+    // success_url: 'http://localhost:3000/paiement/success',
+    // cancel_url: 'http://localhost:3000/paiement/cancel',
   });
 
   res.redirect(303, session.url);
