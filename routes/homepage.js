@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
     res.redirect('../');
   } else {
     console.log(req.session.user);
-    res.render('homepage')
+    res.render('homepage', { tickets: req.session.ticketCard })
   }
 })
 

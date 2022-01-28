@@ -33,16 +33,18 @@
   </div>
   <div class=container-homepage>
     <h3>One-way ticket</h3>
-    <a href="/homepage/my-tickets"><button class="my-ticket">My ticket</button></a>
-    <div class="container-input">
-      <form action="/homepage/search" method="POST">
-        <input type="text" name="departure" placeholder="From: Paris,Marseille">
-        <input type="text" name="arrival" placeholder="To: Lille,Nantes">
-        <input type="date" name="date" value="" min="2018-01-01" max="2018-12-31" placeholder="Choice a date">
-        <button id="btn-go">Go</button>
-      </form>
-    </div>
-    <img style="margin-top: 100px" height="300" src="/images/landmark.png" alt="">
+    <% if (!tickets===false) { %>
+      <a href="/homepage/my-tickets"><button class="my-ticket">My ticket</button></a>
+      <% } %>
+        <div class="container-input">
+          <form action="/homepage/search" method="POST">
+            <input type="text" name="departure" placeholder="From: Paris,Marseille">
+            <input type="text" name="arrival" placeholder="To: Lille,Nantes">
+            <input type="date" name="date" value="" min="2018-01-01" max="2018-12-31" placeholder="Choice a date">
+            <button id="btn-go">Go</button>
+          </form>
+        </div>
+        <img style="margin-top: 100px" height="300" src="/images/landmark.png" alt="">
 
   </div>
 </body>
