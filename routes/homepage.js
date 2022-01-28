@@ -31,10 +31,16 @@ router.get('/add-ticket', function (req, res, next) {
   res.redirect('my-tickets');
 })
 
-router.get('/lastTrips', function (req, res, next) {
+router.get('/lastTrips', async function (req, res, next) {
   if (!req.session.user) {
     return (res.redirect('../'));
   }
+
+  console.log(req.session.user);
+  var user = await usersModel.findById(req.session.user.id).populate().exec();
+
+  //access to user now need to populate with existing cart in session
+  console.log(user);
   res.render('lastTrips')
 })
 
