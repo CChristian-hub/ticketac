@@ -20,7 +20,8 @@ app.locals.formatDate = (date) => {
 
 app.locals.dateFormat = function (elemDate) {
   var date = new Date(elemDate);
-  return (date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
+  var dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  return (date.getDate() + '/' + dates[date.getMonth()] + '/' + date.getFullYear());
 }
 
 const Stripe = require('stripe');
