@@ -58,23 +58,20 @@ router.get('/search', function async(req, res, next) {
 
 router.post('/search', async function (req, res, next) {
   var journeys = await journeyModel.find();
-
+  //Error handling
   if (!req.body.departure || !req.body.arrival) {
     return res.render('search');
   }
-
   //Formatting string
   var stockDeparture = req.body.departure.toLowerCase();
   stockDeparture = req.body.departure.charAt(0).toUpperCase() + req.body.departure.slice(1);
   var stockArrival = req.body.arrival.toLowerCase();
   stockArrival = req.body.arrival.charAt(0).toUpperCase() + req.body.arrival.slice(1);
-
   //Calling DB and error management
   var journey = await journeyModel.find({ "departure": stockDeparture, "arrival": stockArrival });
   if (journey.length === 0) {
     return res.redirect('ticketerror');
   }
-
   // Date Parsing and Saving valid array in Stock variable
   var date = new Date(Date.parse(req.body.date));
   var month = date.getMonth() + 1;
@@ -88,11 +85,9 @@ router.post('/search', async function (req, res, next) {
       stock.push(journey[i]);
     }
   }
-
   if (stock.length === 0) {
     return res.redirect('ticketerror');
   }
-
   //Rendering with array of valid travels, the month and day for display
   res.render('search', { journey: stock, month, day })
 })

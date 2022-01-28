@@ -8,14 +8,16 @@ const Stripe = require('stripe');
 const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 let stripeItems = [];
 
-router.post('/create-checkout-session', async (req, res) => {
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
+var formatD = (elemDate) => {
+  var date = new Date(elemDate);
+  return (date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear());
+}
+
+router.post('/create-checkout-session', async (req, res) => {
   var checkoutArray = [];
   for (var i = 0; i < req.session.ticketCard.length; i++) {
-    var name = "Billet de train: [" + req.session.ticketCard[i].departure + "/" + req.session.ticketCard[i].arrival + "] - (" + req.session.ticketCard[i].date + " à " + req.session.ticketCard[i].departureTime + ")";
+    var name = "Billet de train: [" + req.session.ticketCard[i].departure + "/" + req.session.ticketCard[i].arrival + "] - (" + formatD(req.session.ticketCard[i].date) + " à " + req.session.ticketCard[i].departureTime + ")";
     checkoutArray.push({ price_data: { currency: 'eur', product_data: { name: name, }, unit_amount: 100 * parseInt(req.session.ticketCard[i].price), }, quantity: 1 })
   }
 
@@ -44,6 +46,5 @@ router.get('/success', async (req, res) => {
 router.get('/cancel', (req, res) => {
   res.render('cancel');
 });
-
 
 module.exports = router;

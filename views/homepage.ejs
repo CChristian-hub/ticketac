@@ -33,7 +33,7 @@
   </div>
   <div class=container-homepage>
     <h3>One-way ticket</h3>
-    <% if (!tickets===false) { %>
+    <% if (tickets && tickets.length !=0 ) { %>
       <a href="/homepage/my-tickets"><button class="my-ticket">My ticket</button></a>
       <% } %>
         <div class="container-input">

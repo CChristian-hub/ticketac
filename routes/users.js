@@ -8,12 +8,18 @@ router.get('/', function (req, res, next) {
   res.redirect('../')
 });
 
+router.get('/sign-up', function (req, res, next) {
+  res.render('index')
+})
+
 router.post('/sign-up', async function (req, res, next) {
+  if (req.body.firstNameFromFront === "" || req.body.lastNameFromFront === "" || req.body.emailFromFront === "" || req.body.passwordFrommFront === "") {
+    return res.redirect('/')
+  }
   var alreadyExist = await usersModel.findOne({ email: req.body.emailFromFront });
   var msgSuccess = false;
   if (alreadyExist == null) {
     msgSuccess = true;
-    req.session.msgSuccess = msgSuccess
     var newUsers = new usersModel({
       firstName: req.body.firstNameFromFront,
       lastName: req.body.lastNameFromFront,
@@ -24,7 +30,7 @@ router.post('/sign-up', async function (req, res, next) {
     await newUsers.save();
   }
   console.log(req.session.msgSuccess);
-  res.render('index',{message_success : req.session.msgSuccess});
+  res.render('index', { message_success: msgSuccess });
 });
 
 
