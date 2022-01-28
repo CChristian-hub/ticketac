@@ -12,7 +12,6 @@ router.get('/', function (req, res, next) {
   if (!req.session.user) {
     res.redirect('../');
   } else {
-    console.log(req.session.user);
     res.render('homepage', { tickets: req.session.ticketCard })
   }
 })

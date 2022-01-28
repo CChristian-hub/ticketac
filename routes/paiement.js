@@ -9,6 +9,10 @@ const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 let stripeItems = [];
 
 router.post('/create-checkout-session', async (req, res) => {
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   var checkoutArray = [];
   for (var i = 0; i < req.session.ticketCard.length; i++) {
     var name = "Billet de train: [" + req.session.ticketCard[i].departure + "/" + req.session.ticketCard[i].arrival + "] - (" + req.session.ticketCard[i].date + " à " + req.session.ticketCard[i].departureTime + ")";
