@@ -9,10 +9,6 @@ const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 let stripeItems = [];
 
 router.post('/create-checkout-session', async (req, res) => {
-
-
-  // NEED TO FIX, error : The `line_items` parameter is required in payment mode.
-  // var users = await userModel
   var checkoutArray = [];
   for (var i = 0; i < req.session.ticketCard.length; i++) {
     var name = "Billet de train: [" + req.session.ticketCard[i].departure + "/" + req.session.ticketCard[i].arrival + "] - (" + req.session.ticketCard[i].date + " à " + req.session.ticketCard[i].departureTime + ")";
@@ -31,26 +27,13 @@ router.post('/create-checkout-session', async (req, res) => {
 });
 
 router.get('/success', async (req, res) => {
-  // console.log(req.session.user);
   var user = await usersModel.findById(req.session.user.id).populate().exec();
-  // console.log(user);
 
-  console.log("BEGINNING OF THE LOOP")
-  // console.log(req.session.ticketCard);
   for (var i = 0; i < req.session.ticketCard.length; i++) {
-    console.log(i);
-    var temp = JSON.stringify(req.session.ticketCard[i]);
-    var temp2 = JSON.parse(temp);
-    console.log(typeof (temp))
-    console.log(temp);
-    console.log(typeof (temp2))
-    console.log(temp2);
-    // console.log(req.session.ticketCard[i]);
-    // console.log(typeof (req.session.ticketCard[i]))
-    // user.journeys.push(req.session.ticketCard[i]);
+    user.journeys.push(req.session.ticketCard[i]);
   }
-  // console.log(user);
-  // console.log(user.journeys);
+  await user.save();
+  req.session.ticketCard = []
   res.render('success');
 });
 

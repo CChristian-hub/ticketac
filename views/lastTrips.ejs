@@ -8,59 +8,62 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-    <body>
-      <div id="navbar" class="d-flex justify-content-between">
 
-        <div id="navbarLeft" class="d-flex align-items-center">
-            <a href="/homepage">
-                <img src="/images/train.png" class="m-3" alt="train_logo">
-            </a>
-            <a href="/homepage" class="m-3" id="ticketacButton">
-                Ticketac
-            </a>
+<body>
+  <div id="navbar" class="d-flex justify-content-between">
+
+    <div id="navbarLeft" class="d-flex align-items-center">
+      <a href="/homepage">
+        <img src="/images/train.png" class="m-3" alt="train_logo">
+      </a>
+      <a href="/homepage" class="m-3" id="ticketacButton">
+        Ticketac
+      </a>
+    </div>
+
+    <div id="navbarRight" class="d-flex align-items-centers m-3 p-3">
+      <a href="/" id="navConnexion" class="m-3">
+        Déconnexion
+      </a>
+      <a href="/homepage/lastTrips" id="navLastTrips" class="m-3">
+        My last trips
+      </a>
+    </div>
+  </div>
+  <h2 style="text-align: center; margin-top: 30px; color:white">My last trips</h2>
+  <% if (journeys.length !=0) { %>
+    <table class="table" style="margin-top: 30px; width: 700px; margin:auto; ">
+      <thead style="background-color: rgb(255, 255, 255); border-radius:30px">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Journey</th>
+          <th scope="col">Departure time</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for( let i=0; i < journeys.length; i++ ) { %>
+          <tr style="background-color: rgba(255, 255, 255, 0.829);">
+            <td>
+              <%= dateFormat(journeys[i].date) %>
+            </td>
+            <td>
+              <%= journeys[i].departure %>/<%= journeys[i].arrival %>
+            </td>
+            <td>
+              <%= journeys[i].departureTime %>
+            </td>
+            <td>
+              <%= journeys[i].price %> €
+            </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+    <% } else { %>
+      <h2 style="text-align: center; margin-top: 30px; color:white">Nothing to see here...</h2>
+      <% } %>
         </div>
-    
-        <div id="navbarRight" class="d-flex align-items-centers m-3 p-3">
-            <a href="/" id="navConnexion" class="m-3">
-                Déconnexion
-            </a>
-            <a href="/homepage/lastTrips" id="navLastTrips" class="m-3">
-                My last trips
-            </a>
-        </div>
-    </div> 
-      <h2 style="text-align: center; margin-top: 30px; color:white">My last trips</h2>
-      <table class="table" style="margin-top: 30px; width: 700px; margin:auto; ">
-        <thead style="background-color: rgb(255, 255, 255); border-radius:30px">
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Journey</th>
-            <th scope="col">Departure time</th>
-            <th scope="col">Price</th>
-          </tr> 
-        </thead>
-        <tbody>
-          <tr style="background-color: rgba(255, 255, 255, 0.829);">
-            <td>02/08/2019</td>
-            <td>Paris/Lille</td>
-            <td>15:00 pm</td>
-            <td>80€</td>
-          </tr>
-          <tr style="background-color: rgba(255, 255, 255, 0.829);">
-            <td>02/08/2019</td>
-            <td>Paris/Lille</td>
-            <td>15:00 pm</td>
-            <td>80€</td>
-          </tr>
-          <tr style="background-color: rgba(255, 255, 255, 0.829);">
-            <td>Paris/Lille</td>
-            <td>02/08/2019</td>
-            <td>15:00 pm</td>
-            <td>80€</td>
-           
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </body>
+</body>
+
 </html>

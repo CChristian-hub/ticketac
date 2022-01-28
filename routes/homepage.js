@@ -22,12 +22,15 @@ router.get('/my-tickets', async function (req, res, next) {
   res.render('my-tickets', { produitCard: req.session.ticketCard });
 })
 
-router.get('/add-ticket', function (req, res, next) {
+router.get('/add-ticket', async function (req, res, next) {
   if (req.session.ticketCard == undefined) {
     req.session.ticketCard = [];
   }
-  req.session.ticketCard.push(req.query)
+  var journey = await journeyModel.findById(req.query.journey)
 
+  req.session.ticketCard.push(journey)
+
+  console.log(req.session.ticketCard);
   res.redirect('my-tickets');
 })
 
@@ -36,12 +39,14 @@ router.get('/lastTrips', async function (req, res, next) {
     return (res.redirect('../'));
   }
 
-  console.log(req.session.user);
   var user = await usersModel.findById(req.session.user.id).populate().exec();
+  var journeys = [];
 
-  //access to user now need to populate with existing cart in session
-  console.log(user);
-  res.render('lastTrips')
+  for (let i = 0; i < user.journeys.length; i++) {
+    var journey = await journeyModel.findById(user.journeys[i]);
+    journeys.push(journey)
+  }
+  res.render('lastTrips', { journeys })
 })
 
 router.get('/ticketError', function (req, res, next) {
