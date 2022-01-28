@@ -30,7 +30,27 @@ router.post('/create-checkout-session', async (req, res) => {
   res.redirect(303, session.url);
 });
 
-router.get('/success', (req, res) => {
+router.get('/success', async (req, res) => {
+  // console.log(req.session.user);
+  var user = await usersModel.findById(req.session.user.id).populate().exec();
+  // console.log(user);
+
+  console.log("BEGINNING OF THE LOOP")
+  // console.log(req.session.ticketCard);
+  for (var i = 0; i < req.session.ticketCard.length; i++) {
+    console.log(i);
+    var temp = JSON.stringify(req.session.ticketCard[i]);
+    var temp2 = JSON.parse(temp);
+    console.log(typeof (temp))
+    console.log(temp);
+    console.log(typeof (temp2))
+    console.log(temp2);
+    // console.log(req.session.ticketCard[i]);
+    // console.log(typeof (req.session.ticketCard[i]))
+    // user.journeys.push(req.session.ticketCard[i]);
+  }
+  // console.log(user);
+  // console.log(user.journeys);
   res.render('success');
 });
 

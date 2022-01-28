@@ -95,6 +95,7 @@ router.post('/search', async function (req, res, next) {
 
 router.get('/deconnexion', function async(req, res, next) {
   req.session.user = null;
+  req.session.ticketCard = null;
   res.redirect('/')
 })
 
