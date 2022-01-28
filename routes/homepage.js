@@ -8,9 +8,10 @@ const { aggregate } = require('../models/user');
 
 
 router.get('/', function (req, res, next) {
-  if(req.session.user == null || req.session.user == undefined){
-    res.render('index');
-  }else{
+  //Cette condition vérifie si une variables est a 0, est null, et si elle est undefined !
+  if (!req.session.user) {
+    res.redirect('../');
+  } else {
     console.log(req.session.user);
     res.render('homepage')
   }
@@ -18,26 +19,23 @@ router.get('/', function (req, res, next) {
 
 
 router.get('/my-tickets', async function (req, res, next) {
-  //let produitCard = req.session.find({_id: req.session.ticketCard})
-  
-  res.render('my-tickets',{produitCard: req.session.ticketCard});
+  res.render('my-tickets', { produitCard: req.session.ticketCard });
 })
 
 router.get('/add-ticket', function (req, res, next) {
-  if(req.session.ticketCard == undefined){
+  if (req.session.ticketCard == undefined) {
     req.session.ticketCard = [];
   }
-    req.session.ticketCard.push(req.query)
-  
+  req.session.ticketCard.push(req.query)
+
   res.redirect('my-tickets');
 })
 
 router.get('/lastTrips', function (req, res, next) {
-  if(req.session.user !== null){
-    res.render('lastTrips')
-  }else{
-    res.render('index')
+  if (!req.session.user) {
+    return (res.redirect('../'));
   }
+  res.render('lastTrips')
 })
 
 router.get('/ticketError', function (req, res, next) {
@@ -47,12 +45,6 @@ router.get('/ticketError', function (req, res, next) {
 router.get('/search', function async(req, res, next) {
   res.render('search')
 })
-
-router.get('/deconnexion', function async(req, res, next) {
-  req.session.user = null;
-  res.redirect('/')
-})
-
 
 router.post('/search', async function (req, res, next) {
   var journeys = await journeyModel.find();
@@ -73,7 +65,7 @@ router.post('/search', async function (req, res, next) {
     return res.redirect('ticketerror');
   }
 
-  // Parsing Date and Saving valid array in Stock variable
+  // Date Parsing and Saving valid array in Stock variable
   var date = new Date(Date.parse(req.body.date));
   var month = date.getMonth() + 1;
   var day = date.getDate();
@@ -83,13 +75,10 @@ router.post('/search', async function (req, res, next) {
     var dbMonth = dbDate.getMonth() + 1;
     var dbDay = dbDate.getDate();
     if (dbMonth == month && dbDay >= day) {
-      // console.log(journey[i]._id) //this works to get id
       stock.push(journey[i]);
     }
   }
 
-  // console.log(journey.length);
-  // console.log(stock.length)
   if (stock.length === 0) {
     return res.redirect('ticketerror');
   }
@@ -98,7 +87,10 @@ router.post('/search', async function (req, res, next) {
   res.render('search', { journey: stock, month, day })
 })
 
-
+router.get('/deconnexion', function async(req, res, next) {
+  req.session.user = null;
+  res.redirect('/')
+})
 
 
 
