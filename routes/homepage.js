@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const { aggregate } = require('../models/user');
 
 
-
 router.get('/', function (req, res, next) {
   //Cette condition vérifie si une variables est a 0, est null, et si elle est undefined !
   if (!req.session.user) {
@@ -57,22 +56,21 @@ router.get('/search', function async(req, res, next) {
 })
 
 router.post('/search', async function (req, res, next) {
-  var journeys = await journeyModel.find();
   //Error handling
   if (!req.body.departure || !req.body.arrival) {
     return res.render('search');
   }
   //Formatting string
   var stockDeparture = req.body.departure.toLowerCase();
-  stockDeparture = req.body.departure.charAt(0).toUpperCase() + req.body.departure.slice(1);
+  stockDeparture = req.body.departure.charAt(0).toUpperCase() + stockDeparture.slice(1);
   var stockArrival = req.body.arrival.toLowerCase();
-  stockArrival = req.body.arrival.charAt(0).toUpperCase() + req.body.arrival.slice(1);
+  stockArrival = req.body.arrival.charAt(0).toUpperCase() + stockArrival.slice(1);
   //Calling DB and error management
   var journey = await journeyModel.find({ "departure": stockDeparture, "arrival": stockArrival });
   if (journey.length === 0) {
     return res.redirect('ticketerror');
   }
-  // Date Parsing and Saving valid array in Stock variable
+  //Date Parsing and Saving valid array in Stock variable
   var date = new Date(Date.parse(req.body.date));
   var month = date.getMonth() + 1;
   var day = date.getDate();

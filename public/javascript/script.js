@@ -1,11 +1,11 @@
 const messageSuccess = document.getElementById('msg_success');
 const msgSuccessBool = document.getElementById('msg_sucess_bool').textContent;
 
-if(msgSuccessBool == false){
+if (msgSuccessBool == false) {
     messageSuccess.style.display = 'none';
-}else{
+} else {
     messageSuccess.textContent = 'Votre compte a bien été crée ! AWESOME '
     setTimeout(() => {
         messageSuccess.style.display = 'none';
-    },3000)
+    }, 3000)
 }
