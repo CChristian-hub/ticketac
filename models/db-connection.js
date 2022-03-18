@@ -6,7 +6,7 @@ var options = {
     useUnifiedTopology: true
   };
   
-mongoose.connect('mongodb+srv://hiken:Soufboub1@weatherapp.ziaxs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('your mongo db cluster link',
   options,
   function (err) {
     if (err) {
